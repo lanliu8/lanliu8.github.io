@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title> </title>
+
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"><p style="color:darkgreen;font-weight:bold;font-size:20px">Lan Liu  Group</p></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="people.html">People</a>
+</li>
+<li>
+  <a href="teach.html">Teaching</a>
+</li>
+<li>
+  <a href="publications.html">Publications</a>
+</li>
+<li>
+  <a href="gallery.html">Gallery</a>
+</li>
+<li>
+  <a href="opportunities.html">Join the lab</a>
+</li>
+<li>
+  <a href="cn.html">中文</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore"> </h1>
+
+</div>
+
+
+<div id=""
+class="section level3">
+
+ <em>Generated
+using <a href="https://scholargoggler.com/">“Scholar Googler”</a> on
+March 10th, 2024</em></p>
+<hr>
+<p><code>*</code>: Corresponding author; <code>#</code>: Students in this lab.</p>
+<script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
+<script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+<ol reversed>
+<div id="in-presspreprint" class="section level4">
+<h4></h4>
+<div class = "row">
+<div class = "col-md-10">
+<li>
+<strong>Liu, L.</strong>, Zhang, Z., Wang, X., Zhang, R., Wang, M.,
+Wurzburger, N., Li, J., Zhang, J.<code>*</code>. 2023. 
+Urbanization reduces soil microbial network complexity and stability in
+the megacity of Shanghai. <strong><em>Science of Total
+Environment</em></strong>, 893: 164915 <a
+href="https://doi.org/10.1016/j.scitotenv.2023.164915">doi:10.1016/j.scitotenv.2023.164915</a>
+</div>
+<div class="col-md-2">
+<div class="altmetric-embed" data-doi="10.1016/j.scitotenv.2023.164915"
+data-hide-no-mentions="true">
+
+</div>
+<p><span class="__dimensions_badge_embed__"
+data-doi="10.1016/j.scitotenv.2023.164915"
+data-style="small_rectangle"></span></p>
+</div>
+</div>
+<div class = "row">
+<div class = "col-md-10">
+<li>
+Feng, Y.<code>#</code>, Wang, J., Zhang, J., Qi, X., Long,
+W.<code>*</code>, Ding, Y.<code>*</code>, <strong>Liu, L.<code>*</code></strong>. 2023. Soil microbes support Janzen’s mountain passes hypothesis: The role of local-scale climate variability along a tropical montane gradient.
+<strong><em>Frontiers in Microbiology</em></strong>, 14: 1135116 <a
+href="https://doi.org/10.3389/fmicb.2023.1135116">doi:10.3389/fmicb.2023.1135116</a>
+</div>
+<div class="col-md-2">
+<div class="altmetric-embed" data-doi="10.3389/fmicb.2023.1135116"
+data-hide-no-mentions="true">
+
+</div>
+<p><span class="__dimensions_badge_embed__" data-doi="10.3389/fmicb.2023.1135116"
+data-style="small_rectangle"></span></p>
+</div>
+</div>
+<div class = "row">
+<div class = "col-md-10">
+<li>
+Chen, R., Zhu, J., Jiang, L., <strong>Liu,L.</strong>, Cheng, G., Chen, B., Xu, J., He, Z<code>*</code>. 2023. Soil phosphorus availability controls deterministic and stochastic processes of soil microbial community along an elevational gradient in subtropical forests. <strong><em>Forests</em></strong>, 14: 1475 <a
+href="https://doi.org/10.3390/f14071475">doi:10.3390/f14071475</a>
+</div>
+<div class="col-md-2">
+<div class="altmetric-embed" data-doi="10.3390/f14071475"
+data-hide-no-mentions="true">
+
+</div>
+<p><span class="__dimensions_badge_embed__" data-doi="10.3390/f14071475"
+data-style="small_rectangle"></span></p>
+</div>
+</div>
+<div class = "row">
+<div class = "col-md-10">
+<li>
+Zhang, H.<code>*</code>, He, M., Pandey, S.P., <strong>Liu, L.</strong>, Zhou, S.<code>*</code>. 2023.
+Soil fungal community is more sensitive than bacterial to mining and reforestation in a tropical rainforest. <strong><em>Land Degradation & Development</em></strong>, 34: 4035-4045 <a
+href="https://doi.org/10.1002/ldr.4734">doi:10.1002/ldr.4734</a>
+</div>
+<div class="col-md-2">
+<div class="altmetric-embed" data-doi="10.1002/ldr.4734"
+data-hide-no-mentions="true">
+
+</div>
+<p><span class="__dimensions_badge_embed__"
+data-doi="10.1002/ldr.4734" data-style="small_rectangle"></span></p>
+</div>
+</div>
+<div class = "row">
+<div class = "col-md-10">
+<li>
+Ma, L., <strong>Liu, L.</strong>, Lu, Y., Chen,
+L., Zhang, Z., Zhang, H.e>, Wang,
+X., Shu, L., Yang, Q., Song, Q., Peng, Q.,
+Yu, Z., Zhang, J.<code>*</code>. 2022. When microclimates meet
+soil microbes: soil temperature mediates soil microbial diversity along
+an elevational gradient in subtropical forests. <strong><em>Soil Biology
+and Biochemistry</em></strong> 166: 108566 <a
+href="https://doi.org/10.1016/j.soilbio.2022.108566">doi:10.1016/j.soilbio.2022.108566</a>
+</div>
+<div class="col-md-2">
+<div class="altmetric-embed" data-doi="10.1016/j.soilbio.2022.108566"
+data-hide-no-mentions="true">
+
+</div>
+<p><span class="__dimensions_badge_embed__"
+data-doi="10.1016/j.soilbio.2022.108566"
+data-style="small_rectangle"></span></p>
+</div>
+</div>
+<div class = "row">
+<div class = "col-md-10">
+<li>
+<strong>Liu, L.</strong>, Barberán, A., Gao, C., Zhang, Z., Wang, M.,
+Wurzburger, N., Wang, X., Zhang, R.,
+Li, J.<code>*</code>, Zhang,
+J.<code>*</code>. 2021. Impact of urbanization on soil microbial
+diversity and composition in the megacity of Shanghai. <strong><em>Land
+Degradation &amp; Development</em></strong> 33(2): 282-293 <a
+href="https://doi.org/10.1002/ldr.4145">doi:10.1002/ldr.4145</a>
+</div>
+<div class="col-md-2">
+<div class="altmetric-embed" data-doi="10.1002/ldr.4145"
+data-hide-no-mentions="true">
+
+</div>
+<p><span class="__dimensions_badge_embed__" data-doi="10.1002/ldr.4145"
+data-style="small_rectangle"></span></p>
+</div>
+</div>
+<div class = "row">
+<div class = "col-md-10">
+<li>
+<strong>Liu, L.</strong>, Zhu, K., Krause, S., Li, S., Wang,
+X., Zhang, Z., Shen, M., Yang,
+Q., Lian, J., Wang, X., Ye, W., Zhang,
+J.<code>*</code>. 2021. Changes in assembly processes of soil
+microbial communities during secondary succession in two subtropical
+forests. <strong><em>Soil Biology and Biochemistry</em></strong>
+154:108144 <a
+href="https://doi.org/10.1016/j.soilbio.2021.108144">doi:10.1016/j.soilbio.2021.108144</a>
+</div>
+<div class="col-md-2">
+<div class="altmetric-embed" data-doi="10.1016/j.soilbio.2021.108144"
+data-hide-no-mentions="true">
+
+</div>
+<p><span class="__dimensions_badge_embed__"
+data-doi="10.1016/j.soilbio.2021.108144"
+data-style="small_rectangle"></span></p>
+</div>
+</div>
+<div class = "row">
+<div class = "col-md-10">
+<li>
+Zhang, M., Weng, S., Gao, H., <strong>Liu, L.</strong>, Li,
+J., Zhou, X.<code>*</code>. 2021. Urbanization degree rather than methanotrophic abundance decreases soil CH4 uptake. <strong><em>Geoderma</em></strong>
+14(4):702-716 <a
+href="https://doi.org/10.1016/j.geoderma.2021.115368">doi:10.1016/j.geoderma.2021.115368</a>
+</div>
+<div class="col-md-2">
+<div class="altmetric-embed" data-doi="10.1016/j.geoderma.2021.115368"
+data-hide-no-mentions="true">
+
+</div>
+<p><span class="__dimensions_badge_embed__"
+data-doi="10.1016/j.geoderma.2021.115368" data-style="small_rectangle"></span></p>
+</div>
+</div>
+<div class = "row">
+<div class = "col-md-10">
+<li>
+<strong>Liu, L.</strong> and Zhang, J.<code>*</code> 2020.
+Decoding the secret of species coexistence: a perspective from soil
+fungi. <strong><em>Science China Life Sciences</em></strong> 63:169-170
+<a
+href="https://doi.org/10.1007/s11427-019-1591-8">doi:10.1007/s11427-019-1591-8</a>
+</div>
+<div class="col-md-2">
+<div class="altmetric-embed" data-doi="10.1007/s11427-019-1591-8"
+data-hide-no-mentions="true">
+
+</div>
+<p><span class="__dimensions_badge_embed__"
+data-doi="10.1007/s11427-019-1591-8"
+data-style="small_rectangle"></span></p>
+</div>
+</div>
+<div class = "row">
+<div class = "col-md-10">
+<li>
+<strong>Liu, L.</strong>, Zhu, K., Wurzburger, N. and Zhang,
+J.<code>*</code> Relationships between plant and soil microbial
+diversity vary across taxonomic groups and spatial scales.
+<strong><em>Ecosphere</em></strong> 11(1):e02999 <a
+href="https://doi.org/10.1002/ecs2.2999">doi:10.1002/ecs2.2999</a>
+</div>
+<div class="col-md-2">
+<div class="altmetric-embed" data-doi="10.1002/ecs2.2999"
+data-hide-no-mentions="true">
+</div>
+<p><span class="__dimensions_badge_embed__" data-doi="10.1002/ecs2.2999"
+data-style="small_rectangle"></span></p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<li>
+Zhang, L., <strong>Liu L.</strong>, Cheng, P., Shen, H., Rong,
+B., Liu, W., Yu, G<code>*</code>. 2017.
+Identification and validation of reference genes for RT-qPCR analysis in banana (Musa spp.) under Fusarium wilt resistance induction conditions. <strong><em>Journal of Phytopathology</em></strong> 165: 746-754 <a
+href="https://doi.org/10.1111/jph.12614">doi:10.1111/jph.12614</a>
+</div>
+<div class="col-md-2">
+<div class="altmetric-embed" data-doi="10.1111/jph.12614"
+data-hide-no-mentions="true">
+</div>
+<p><span class="__dimensions_badge_embed__"
+data-doi="10.1016/j.gecco.2019.e00572"
+data-style="small_rectangle"></span></p>
+</div>
+</div>
+<div class = "row">
+<div class = "col-md-10">
+<li>
+<strong>Liu, L.</strong>, Yu, S., Xie, Z.<code>*</code>, 
+Staehelin, C.<code>*</code>. 2019. Distance-dependent effects of pathogenic fungi on seedlings of a legume tree: impaired nodule formation and identification of antagonistic rhizosphere bacteria. <strong><em>Journal of Ecology</em></strong>
+104: 1009-1019 <a
+href="https://doi.org/10.1111/1365-2745.12570">doi:10.1111/1365-2745.12570</a>
+</div>
+<div class="col-md-2">
+<div class="altmetric-embed" data-doi="10.1111/1365-2745.12570"
+data-hide-no-mentions="true">
+
+</div>
+<p><span class="__dimensions_badge_embed__"
+data-doi="10.1111/1365-2745.12570"
+data-style="small_rectangle"></span></p>
+</div>
+</div>
+<div class = "row">
+<div class = "col-md-10">
+<li>
+<strong>Liu, L.</strong>, Wei, Z. and Chen, L,code>*</code>. 2012.
+Investigation and Analysis of Potential Exploitation and Utilization of Native Plant Resources in Huanggang City. 黄冈市乡土植物资源调查及开发利用潜力分析.
+<strong><em>Chinese Landscape Architecture 中国园林</em></strong> 10: 78-81.
+(In Chinese)
+</li>
+
+</div>
+</div>
+</div>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<body>
+
+
+
+<hr>
+<center>
+Copyright © <a href="mailto:liulan_sh@qq.com">Lan Liu</a> 2021 –
+<script type="text/javascript">
+  document.write(new Date().getFullYear());
+</script>
+<div class="line-block">Created using <a href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">rmarkdown</a></div>
+</center>
+
+
+</body>
+</html>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

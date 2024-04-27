@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>刘兰课题组</title>
+
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"><p style="color:darkgreen;font-weight:bold;font-size:20px">Lan Liu Group</p></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="people.html">People</a>
+</li>
+<li>
+  <a href="teach.html">Teaching</a>
+</li>
+<li>
+  <a href="publications.html">Publications</a>
+</li>
+<li>
+  <a href="gallery.html">Gallery</a>
+</li>
+<li>
+  <a href="cn.html">中文</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore"> </h1>
+
+</div>
+
+
+<div class="row">
+<div class="col-md-6">
+<p><br></p>
+<div id="刘兰" class="section level3">
+<h3><strong>刘兰</strong></h3>
+<p>副教授 (海南省高层次人才)、硕士生导师<br> <a href="https://www.hainan.edu.cn/">海南大学</a> <br> <a href="http://hd.hainan.edu.cn/linxue/">热带农林学院</a></p>
+<p>地址：海南省海口市人民大道58号 农科楼C510<br> 邮编：570228<br> 邮箱：<a href="mailto:luilan_sh@qq.com">luilan_sh(at)qq.com</a></p>
+</div>
+</div>
+<div class="col-md-6">
+<p><br></p>
+<p><a href="Photo_Lab202306.jpg" id="id" class="class" width="130%" height="130%"><img src="Pictures/Photo_Lab202306.jpg" /></a></p>
+</div>
+</div>
+<hr>
+<div id="工作经历" class="section level4">
+<h4>工作经历</h4>
+<ul>
+<li><p>2021.05 –          : 副教授、硕士生导师（海南省拔尖人才）； <a href="http://hd.hainan.edu.cn/linxue/">海南大学热带农林学院</a></p></li>
+<li><p>2016.10 – 2021.04: 博士后 (合作导师：<a href="http://ecoinfor.github.io/cn.html">张健</a>)； 华东师范大学生态与环境科学学院</p></li>
+<li><p>2018.03 – 2018.09: 访问学者 (合作导师：<a href="http://zhulab.seas.umich.edu">朱锴</a>)； [美国]加州大学环境科学系</p></li>
+</ul>
+<hr>
+</div>
+<div id="教育背景" class="section level4">
+<h4>教育背景</h4>
+<ul>
+<li><p>2011.09 – 2015.06: 理学博士 (专业：植物学/植物与微生物互作方向；导师: Prof. Christian Staehelin</a>); 中山大学 生命科学学院</a></p></li>
+<li><p>2008.09 – 2011.06: 农学硕士 (专业：园林植物与观赏园艺/城市生物多样性方向；导师: 陈龙清 教授</a>; 华中农业大学 园艺林学学院</a></p></li>
+<li><p>2004.09 – 2008.06: 农学学士 (专业：园林); 华中农业大学 园艺林学学院</p></li>
+</ul>
+<hr>
+</div>
+<div id="研究兴趣" class="section level4">
+<h4>研究兴趣</h4>
+<ul>
+<li><p>
+研究方向： <strong>生物多样性、群落生态学、微生物生物地理学</strong>
+</p></li>
+<li><p>
+研究手段：包括但不限于野外和温室内控制实验、生物学实验、微生物基因组分析等。
+</p></li>
+<li><p>
+研究对象：近年来的工作主要关注热带森林生态系统多样维持机制、微生物分布格局和生境破碎化对多样性的影响等。
+</p></li>
+</ul>
+<hr>
+<ul>
+<li><p style="color:darkgreen">
+<strong>课题组目前拟招收博士后1–2名。
+</p></li>
+<li><p style="color:darkgreen">
+<strong>课题组每年招收硕士研究生1–2名，2024-2025年招收博士研究生1名。欢迎与本人联系。
+</p></li>
+<li><p style="color:darkgreen">
+<strong>课题组非常欢迎对生态学、生物多样性科学感兴趣的本科生来课题组实习或做毕业论文。</strong>
+</p></li>
+</ul>
+</div>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<body>
+
+
+
+<hr>
+<center>
+Copyright © <a href="mailto:jzhang@des.ecnu.edu.cn">Lan Liu</a> 2021 –
+<script type="text/javascript">
+  document.write(new Date().getFullYear());
+</script>
+<div class="line-block">Created using <a href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">rmarkdown</a></div>
+</center>
+
+
+</body>
+</html>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

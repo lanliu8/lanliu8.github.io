@@ -1,0 +1,35 @@
+name: "Jian Zhang"
+title: "Jian Zhang"
+description: "Homepage for Jian Zhang's Biodiversity and Ecoinformatics Group at School of Ecological and Evironmental Sciences, East China Normal University, Shanghai."
+output_dir: "."
+navbar:
+  title: <p style="color:darkgreen;font-weight:bold;font-size:20px">Biodiversity and Ecoinformatics Group</p>
+  right:
+    - text: "HOME"
+      href: index.html
+    - text: "TEAM"
+      href: people.html
+    - text: "RESEARCH"
+      href: research.html
+    - text: "PUBLICATIONS"
+      href: publications.html
+    - text: "TEACHING"
+      href: teach.html
+    - text: "GALLERY"
+      href: gallery.html
+    - text: "JOIN THE LAB"
+      href: opportunities.html
+    - text: "中文"
+      href: cn.html
+    - text: "LIBRARY"
+      href: library.html
+    - text: "DATA"
+      href: Data.html
+      
+output:
+  html_document:
+    theme: readable
+    highlight: textmate
+    include:
+#      in_header: header.html
+      after_body: footer.html
